@@ -1,0 +1,237 @@
+/* ========================================
+   VARIÁVEIS GLOBAIS
+======================================== */
+:root {
+    --bg-profundo: #0b132b;
+    --bg-cartao: #1c2541;
+    --azul-destaque: #23A7E3;
+    --texto-claro: #e0fbfc;
+}
+
+/* ========================================
+   ESTILOS GERAIS
+======================================== */
+body {
+    background-color: var(--bg-profundo);
+    color: var(--texto-claro);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: #070b1a !important;
+}
+
+#search-input::placeholder {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* ========================================
+   CORES PERSONALIZADAS DO BOOTSTRAP
+======================================== */
+.text-info {
+    color: var(--azul-destaque) !important;
+}
+
+.bg-info {
+    background-color: var(--azul-destaque) !important;
+    color: #fff !important;
+}
+
+.btn-info {
+    background-color: var(--azul-destaque);
+    border-color: var(--azul-destaque);
+    color: #fff;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info.active {
+    background-color: #1a88bb;
+    border-color: #1a88bb;
+    color: #fff;
+}
+
+.btn-outline-info {
+    color: var(--azul-destaque);
+    border-color: var(--azul-destaque);
+}
+
+.btn-outline-info:hover,
+.btn-outline-info:focus,
+.btn-outline-info.active {
+    background-color: var(--azul-destaque);
+    border-color: var(--azul-destaque);
+    color: #fff;
+}
+
+/* ========================================
+   MENU DE NAVEGAÇÃO
+======================================== */
+.glass-nav {
+    background: rgba(11, 19, 43, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(44, 155, 189, 0.2);
+}
+
+/* ========================================
+   CABEÇALHO HERO COM VÍDEO
+======================================== */
+.hero-section {
+    min-height: 75vh;
+    background: #071321;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 100px 0 50px;
+}
+
+/* Vídeo de fundo */
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -3;
+}
+
+/* Sobreposição escura para combinar com o site */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(7, 19, 33, 0.88) 0%,
+            rgba(7, 19, 33, 0.58) 50%,
+            rgba(7, 19, 33, 0.78) 100%);
+    z-index: -2;
+}
+
+/* Conteúdo do cabeçalho */
+.hero-content {
+    max-width: 900px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.hero-content .btn {
+    text-shadow: none;
+}
+
+/* ========================================
+   ANIMAÇÃO DAS BOLHAS
+======================================== */
+.ocean-bubbles {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle,
+            rgba(44, 155, 189, 0.15) 2px,
+            transparent 2px);
+    background-size: 50px 50px;
+    animation: moverBolhas 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes moverBolhas {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 -500px;
+    }
+}
+
+/* ========================================
+   CARTÕES DOS PEIXES
+   Aplicável ao catálogo e aos favoritos
+======================================== */
+.fish-card {
+    background-color: var(--bg-cartao);
+    border: 1px solid rgba(44, 155, 189, 0.15);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.fish-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(44, 155, 189, 0.2);
+}
+
+/* Imagens dos cartões */
+.fish-img-container {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    background-color: #0b132b;
+}
+
+.fish-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.fish-card:hover .fish-img-container img {
+    transform: scale(1.08);
+}
+
+/* ========================================
+   JANELA MODAL DOS DETALHES
+======================================== */
+.card-peixe {
+    background-color: #1c2541;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 70vh;
+        padding: 110px 0 45px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .hero-overlay {
+        background: rgba(7, 19, 33, 0.72);
+    }
+
+    .fish-img-container {
+        height: 200px;
+    }
+}
+
+/* ========================================
+   ACESSIBILIDADE
+   Respeitar a preferência por movimento reduzido
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    .ocean-bubbles,
+    .fish-card,
+    .fish-card:hover,
+    .fish-img-container img {
+        animation: none;
+        transform: none;
+        transition: none;
+    }
+}
